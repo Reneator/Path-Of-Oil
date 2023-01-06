@@ -6,4 +6,6 @@ module com.example.pathofoil {
 
     opens com.drzed.pathofoil to javafx.fxml;
     exports com.drzed.pathofoil;
+    exports com.drzed.pathofoil.objects;
+    opens com.drzed.pathofoil.objects to javafx.fxml;
 }

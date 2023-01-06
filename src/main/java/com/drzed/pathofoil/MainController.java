@@ -12,18 +12,14 @@ public class MainController {
     public Stage stage;
 
     public void updatePictures() {
-        // Clears images before displaying new ones so if you did amulet (3 oils)
-        //      then ring (2 oils) the 3rd oil won't remain the one from the amulet
-        oil1.setImage(null);
-        oil2.setImage(null);
-        oil3.setImage(null);
+        clearOilImages();
 
         // Sanity Check
-        if (!POO.anointments_masterlist.containsKey(POO.CurrentItem)) {
-            System.out.println("NO EXIST : " + POO.CurrentItem);
+        if (!POO.anointmentsMasterList.containsKey(POO.currentItem)) {
+            System.out.println("NO EXIST : " + POO.currentItem);
         }
 
-        String[] oils = POO.anointments_masterlist.get(POO.CurrentItem).split(",");
+        String[] oils = POO.anointmentsMasterList.get(POO.currentItem).split(",");
         for (int i = 0; i < oils.length; i++) {
             if (i == 0) {
                 oil1.setImage(POO.getOilImage(oils[i]));
@@ -35,6 +31,14 @@ public class MainController {
                 oil3.setImage(POO.getOilImage(oils[i]));
             }
         }
+    }
+
+    private void clearOilImages() {
+        // Clears images before displaying new ones so if you did amulet (3 oils)
+        //      then ring (2 oils) the 3rd oil won't remain the one from the amulet
+        oil1.setImage(null);
+        oil2.setImage(null);
+        oil3.setImage(null);
     }
 
     // Enables moving window since it's an Undecorated one (fake title bar in place)
